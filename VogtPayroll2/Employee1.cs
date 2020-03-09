@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VogtPayroll2
 {
-    class Employee
+    abstract class Employee
     {
         //For simplicity, use a constant tax rate of 30% to compute the tax amount
         protected string name;
@@ -12,9 +12,10 @@ namespace VogtPayroll2
         protected decimal payRate;
         protected const decimal taxAmount = .30m; 
 
-        public Employee(string aName)
+        public Employee(string aName, decimal aPayRate)
         {
             name = aName;
+            payRate = aPayRate;
         }
         public void DisplayEmployeeInfo(Employee employee)
         {
@@ -22,8 +23,8 @@ namespace VogtPayroll2
             Console.WriteLine($"Employee Name: {employee.name}");
             Console.WriteLine($"Hours worked: {employee.hoursWorked}");
             Console.WriteLine("Hourly rate: {Employee}");
-            Console.WriteLine("Overtime pay: {Employee}");
-            Console.WriteLine("Regular (gross) pay: {Employee}");
+            Console.WriteLine($"Overtime pay: {OverTime()}");
+            Console.WriteLine("Regular (gross) pay: {FindGrossPay()}");
             Console.WriteLine("Tax amount: {Employee}");
             Console.WriteLine("Net Pay: {Employee}");
         }
@@ -43,6 +44,16 @@ namespace VogtPayroll2
             return netPay;
         }
 
+        public decimal OverTime()
+        {
+            //Employees that work over 40 hours will receive overtime pay of one and a half of their hourly rate for overtime hours worked.
+            decimal overTimePay = default;
+
+            overTimePay = Pay(payRate);
+
+            return overTimePay;
+        }
+
         public decimal Pay(decimal payRate)
         {
             decimal overTimePay = default;
@@ -58,15 +69,17 @@ namespace VogtPayroll2
             return overTimePay;
         }
 
+        public abstract decimal GetGrossPay();
+
         /*
         public decimal FindTaxAmount()
         {
-            taxAmount * 
+            taxAmount * GrossPay()
         }
 
         public decimal ReturnNetPay()
         {
-            return FindOverTimePaySalary() + FindGrossPay();
+            return GetSalaryPayRate() + GetGrossPay();
 
         }
         */

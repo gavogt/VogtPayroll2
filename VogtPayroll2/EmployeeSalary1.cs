@@ -8,26 +8,25 @@ namespace VogtPayroll2
     {
         private decimal _salary;
 
-        public EmployeeSalary(string aName)
-            : base(aName)
+        public EmployeeSalary(string aName, decimal aPayRate)
+            : base(aName, aPayRate)
         {
-
+            this.name = aName;
+            this.payRate = aPayRate;
         }
 
-        public decimal FindGrossPay()
+        public override decimal GetGrossPay()
         {
             // For salary based employees, to find the regular (gross) pay for a week, divide the salary by 52.
             return _salary / 52;
         }
 
-        public decimal FindOverTimePaySalary()
+        public decimal GetSalaryPayRate()
         {
-            decimal overTimePay = default;
+            // To compute the overtime pay for a salary based employee, first find the hourly rate by dividing the gross pay by 40, and then compute overtime pay
+            payRate = Convert.ToDecimal(GetGrossPay() / 40);
 
-            payRate = Convert.ToDecimal(FindGrossPay() / 40);
-            overTimePay = Pay(payRate);
-
-            return overTimePay;
+            return payRate;
         }
 
 
