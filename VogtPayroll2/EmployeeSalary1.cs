@@ -8,10 +8,11 @@ namespace VogtPayroll2
     {
         private decimal _salary;
 
-        public EmployeeSalary(string aName, decimal aPayRate)
-            : base(aName, aPayRate)
+        public EmployeeSalary(string aName, int aHoursworked, decimal aPayRate)
+            : base(aName, aHoursworked, aPayRate)
         {
             this.name = aName;
+            this.hoursWorked = aHoursworked;
             this.payRate = aPayRate;
         }
 

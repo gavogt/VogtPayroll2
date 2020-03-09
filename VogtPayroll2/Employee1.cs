@@ -12,9 +12,10 @@ namespace VogtPayroll2
         protected decimal payRate;
         protected const decimal taxAmount = .30m;
 
-        public Employee(string aName, decimal aPayRate)
+        public Employee(string aName, int aHoursWorked, decimal aPayRate)
         {
             name = aName;
+            hoursWorked = aHoursWorked;
             payRate = aPayRate;
         }
         public void DisplayEmployeeInfo(Employee employee)
@@ -87,6 +88,6 @@ namespace VogtPayroll2
             return GetGrossPay() - GetTaxAmount();
 
         }
-        
+
     }
 }
