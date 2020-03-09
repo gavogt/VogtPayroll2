@@ -70,6 +70,7 @@ namespace VogtPayroll2
         }
 
         public abstract decimal GetGrossPay();
+        public abstract decimal GetPayRate();
 
         /*
         public decimal FindTaxAmount()
@@ -79,7 +80,7 @@ namespace VogtPayroll2
 
         public decimal ReturnNetPay()
         {
-            return GetSalaryPayRate() + GetGrossPay();
+            return GetPayRate() + GetGrossPay();
 
         }
         */

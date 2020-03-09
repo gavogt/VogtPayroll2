@@ -15,16 +15,20 @@ namespace VogtPayroll2
 
         public override decimal GetGrossPay()
         {
+            decimal regularPay = default;
             decimal overTime;
             overTime = OverTime();
+            if (hoursWorked > 40)
+            {
+                hoursWorked = 40;
+                regularPay = 1.5m * hoursWorked * payRate;
+            }
 
-            return overTime;
+            return overTime + regularPay;
         }
 
-        public decimal GetHourlyPayRate()
+        public override decimal GetPayRate()
         {
-
-            payRate = 1.5m * hoursWorked;
 
             return payRate;
         }

@@ -21,7 +21,7 @@ namespace VogtPayroll2
             return _salary / 52;
         }
 
-        public decimal GetSalaryPayRate()
+        public override decimal GetPayRate()
         {
             // To compute the overtime pay for a salary based employee, first find the hourly rate by dividing the gross pay by 40, and then compute overtime pay
             payRate = Convert.ToDecimal(GetGrossPay() / 40);
