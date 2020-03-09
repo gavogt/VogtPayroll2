@@ -10,7 +10,7 @@ namespace VogtPayroll2
         protected string name;
         protected int hoursWorked;
         protected decimal payRate;
-        protected const decimal taxAmount = .30m; 
+        protected const decimal taxAmount = .30m;
 
         public Employee(string aName, decimal aPayRate)
         {
@@ -22,11 +22,11 @@ namespace VogtPayroll2
             // The output should display the aName of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
             Console.WriteLine($"Employee Name: {employee.name}");
             Console.WriteLine($"Hours worked: {employee.hoursWorked}");
-            Console.WriteLine("Hourly rate: {Employee}");
+            Console.WriteLine($"Hourly rate: {GetPayRate()}");
             Console.WriteLine($"Overtime pay: {OverTime()}");
-            Console.WriteLine("Regular (gross) pay: {FindGrossPay()}");
-            Console.WriteLine("Tax amount: {Employee}");
-            Console.WriteLine("Net Pay: {Employee}");
+            Console.WriteLine($"Regular (gross) pay: {GetGrossPay()}");
+            Console.WriteLine($"Tax amount: {GetTaxAmount()}");
+            Console.WriteLine($"Net Pay: {GetNetPay()}");
         }
 
         public void DisplayNetPayOfAllEmployees(Employee[] employee)
@@ -72,17 +72,21 @@ namespace VogtPayroll2
         public abstract decimal GetGrossPay();
         public abstract decimal GetPayRate();
 
-        /*
-        public decimal FindTaxAmount()
+
+        public decimal GetTaxAmount()
         {
-            taxAmount * GrossPay()
+            decimal grossPay = GetGrossPay();
+            decimal taxedAmount;
+            taxedAmount = taxAmount * grossPay;
+
+            return taxedAmount;
         }
 
-        public decimal ReturnNetPay()
+        public decimal GetNetPay()
         {
-            return GetPayRate() + GetGrossPay();
+            return GetGrossPay() - GetTaxAmount();
 
         }
-        */
+        
     }
 }
