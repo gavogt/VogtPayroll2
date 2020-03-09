@@ -6,9 +6,11 @@ namespace VogtPayroll2
 {
     class Employee
     {
+        //For simplicity, use a constant tax rate of 30% to compute the tax amount
         protected string name;
         protected int hoursWorked;
         protected decimal payRate;
+        protected const decimal taxAmount = .30m; 
 
         public Employee(string aName)
         {
@@ -40,5 +42,18 @@ namespace VogtPayroll2
 
             return netPay;
         }
+
+        /*
+        public decimal FindTaxAmount()
+        {
+            taxAmount * 
+        }
+
+        public decimal ReturnNetPay()
+        {
+            return FindOverTimePay() + FindGrossPay();
+
+        }
+        */
     }
 }
