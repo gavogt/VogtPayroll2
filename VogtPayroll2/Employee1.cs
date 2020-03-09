@@ -8,14 +8,16 @@ namespace VogtPayroll2
     {
         protected string name;
         protected int hoursWorked;
+        protected decimal payRate;
 
-
+        public Employee(string aName)
+        {
+            name = aName;
+        }
         public void DisplayEmployeeInfo(Employee employee)
         {
-            // The output should display the name of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
-            Employee hourlyEmployee = new EmployeeHourly();
-
-            Console.WriteLine("Employee name: {Employee.name}");
+            // The output should display the aName of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
+            Console.WriteLine("Employee aName: {Employee.aName}");
             Console.WriteLine("Hours worked: {Employee}");
             Console.WriteLine("Hourly rate: {Employee}");
             Console.WriteLine("Overtime pay: {Employee}");
