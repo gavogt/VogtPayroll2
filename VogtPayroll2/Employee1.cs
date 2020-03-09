@@ -19,11 +19,11 @@ namespace VogtPayroll2
         public void DisplayEmployeeInfo(Employee employee)
         {
             // The output should display the aName of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
-            Console.WriteLine("Employee aName: {Employee.aName}");
-            Console.WriteLine("Hours worked: {Employee}");
+            Console.WriteLine($"Employee Name: {employee.name}");
+            Console.WriteLine($"Hours worked: {employee.hoursWorked}");
             Console.WriteLine("Hourly rate: {Employee}");
             Console.WriteLine("Overtime pay: {Employee}");
-            Console.WriteLine("Regular (gross) pay: {Employee");
+            Console.WriteLine("Regular (gross) pay: {Employee}");
             Console.WriteLine("Tax amount: {Employee}");
             Console.WriteLine("Net Pay: {Employee}");
         }
@@ -43,6 +43,21 @@ namespace VogtPayroll2
             return netPay;
         }
 
+        public decimal Pay(decimal payRate)
+        {
+            decimal overTimePay = default;
+            decimal hoursW = default;
+
+            if (hoursWorked > 40)
+            {
+                hoursW = Convert.ToDecimal(hoursWorked - 40.00);
+
+                overTimePay = hoursW * (payRate * 1.5m);
+            }
+
+            return overTimePay;
+        }
+
         /*
         public decimal FindTaxAmount()
         {
@@ -51,7 +66,7 @@ namespace VogtPayroll2
 
         public decimal ReturnNetPay()
         {
-            return FindOverTimePay() + FindGrossPay();
+            return FindOverTimePaySalary() + FindGrossPay();
 
         }
         */

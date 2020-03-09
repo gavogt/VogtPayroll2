@@ -20,6 +20,7 @@ namespace VogtPayroll2
         {
             bool run;
 
+
             Console.WriteLine("How many employees would you like to add? Please select 1-10");
             run = int.TryParse(Console.ReadLine(), out int result) && result > 1 && result < 10;
 
