@@ -23,11 +23,11 @@ namespace VogtPayroll2
             // The output should display the name of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
             Console.WriteLine($"Employee Name: {employee._name}");
             Console.WriteLine($"Hours worked: {employee._hoursWorked}");
-            Console.WriteLine($"Hourly rate: {GetPayRate()}");
-            Console.WriteLine($"Overtime pay: {GetOverTimePay()}");
-            Console.WriteLine($"Regular (gross) pay: {GetGrossPay()}");
-            Console.WriteLine($"Tax amount: {GetTaxAmount()}");
-            Console.WriteLine($"Net GetOvertimePay: {GetNetPay()}");
+            Console.WriteLine($"Hourly rate: {GetPayRate():C2}");
+            Console.WriteLine($"Overtime pay: {GetOverTimePay():C2}");
+            Console.WriteLine($"Regular (gross) pay: {GetGrossPay():C2}");
+            Console.WriteLine($"Tax amount: {GetTaxAmount():C2}");
+            Console.WriteLine($"Net GetOvertimePay: {GetNetPay():C2}");
         }
 
         public decimal GetOverTimePay()
@@ -46,7 +46,7 @@ namespace VogtPayroll2
             if (_hoursWorked <= 40)
                 return 0;
 
-            return 0;// GetOverTimePayRate() * (hoursWorked - 40);
+            return GetPayRate() * (_hoursWorked - 40);
 
         }
 
