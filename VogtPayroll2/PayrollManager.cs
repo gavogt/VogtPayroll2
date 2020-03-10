@@ -24,9 +24,11 @@ namespace VogtPayroll2
 
         }
 
-        public void AddEmployee(Employee employee)
+        public List<Employee> AddEmployee(Employee employee)
         {
             _employees.Add(employee);
+
+            return _employees;
 
         }
     }
