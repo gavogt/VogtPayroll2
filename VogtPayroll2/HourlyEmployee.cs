@@ -4,9 +4,9 @@ using System.Text;
 
 namespace VogtPayroll2
 {
-    class EmployeeHourly : Employee
+    class HourlyEmployee : Employee
     {
-        public EmployeeHourly(string name, int hoursWorked)
+        public HourlyEmployee(string name, int hoursWorked)
             : base(name, hoursWorked)
         {
             this._name = name;

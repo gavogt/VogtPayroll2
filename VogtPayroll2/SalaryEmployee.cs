@@ -4,11 +4,11 @@ using System.Text;
 
 namespace VogtPayroll2
 {
-    class EmployeeSalary : Employee
+    class SalaryEmployee : Employee
     {
         private decimal _salary;
 
-        public EmployeeSalary(string name, int hoursWorked, decimal salary)
+        public SalaryEmployee(string name, int hoursWorked, decimal salary)
             : base(name, hoursWorked)
         {
             this._name = name;

@@ -30,6 +30,28 @@ namespace VogtPayroll2
 
         }
 
+        public static void PrintMenu()
+        {
+            char option = Convert.ToChar(Console.ReadKey());
+
+            while (option != 'q')
+            {
+                switch (option)
+                {
+                    case 's':
+                        //PayrollConsoleReader.ReadSalaryEmployeeFromConsole();
+                        break;
+                    case 'h':
+                        //PayrollConsoleReader.ReadHourlyEmployeeFromConsole();
+                        break;
+                    default:
+                        Console.WriteLine("default");
+                        break;
+
+                }
+            }
+        }
+
 
     }
 }

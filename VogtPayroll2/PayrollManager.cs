@@ -6,6 +6,8 @@ namespace VogtPayroll2
 {
     class PayrollManager
     {
+        private List<Employee> _employees = new List<Employee>();
+
         public void GetNetPayOfAllEmployees(Employee[] employee)
         {
             // The average net pay of all employees should also be displayed
@@ -19,6 +21,12 @@ namespace VogtPayroll2
             decimal netPay = default;
 
             return netPay;
+
+        }
+
+        public void AddEmployee(Employee employee)
+        {
+            _employees.Add(employee);
 
         }
     }
