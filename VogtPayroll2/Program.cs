@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VogtPayroll2
 {
     class Program
     {
+        private static int employeeCounter;
+
         static void Main(string[] args)
         {
-            EmployeeArray(HowManyEmployees());
+            PayrollManager payrollManager = new PayrollManager();
+
+
+            
         }
 
         public static Employee[] EmployeeArray(int result)
@@ -32,26 +38,42 @@ namespace VogtPayroll2
 
         public static void PrintMenu()
         {
+            PayrollManager payrollManager = new PayrollManager();
             char option = Convert.ToChar(Console.ReadKey());
+            string name;
+            int hoursWorked;
+            decimal salary;
 
+            Console.WriteLine("Press 'q' to quit, 's' to create a salary employee and 'h' for an hourly employee");
             while (option != 'q')
             {
                 switch (option)
                 {
                     case 's':
-                        //PayrollConsoleReader.ReadSalaryEmployeeFromConsole();
+                        Console.WriteLine("What is the name of the employee?");
+                        name = Console.ReadLine();
+                        Console.WriteLine("How many hours were worked?");
+                        hoursWorked = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("What is the salary of the employee?");
+                        salary = Convert.ToDecimal(Console.ReadLine());
+                        payrollManager.AddEmployee(PayrollConsoleReader.ReadSalaryEmployeeFromConsole(name, hoursWorked, salary));
+                        employeeCounter++;
                         break;
                     case 'h':
-                        //PayrollConsoleReader.ReadHourlyEmployeeFromConsole();
+                        Console.WriteLine("What is the name of the employee?");
+                        name = Console.ReadLine();
+                        Console.WriteLine("How many hours were worked?");
+                        hoursWorked = Convert.ToInt32(Console.ReadLine());
+                        payrollManager.AddEmployee(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, hoursWorked));
+                        employeeCounter++;
                         break;
                     default:
-                        Console.WriteLine("default");
+                        Console.WriteLine("Please press q, s or h");
                         break;
 
                 }
+
             }
         }
-
-
     }
 }
