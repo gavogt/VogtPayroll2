@@ -52,6 +52,8 @@ namespace VogtPayroll2
             string name;
             int hoursWorked;
             decimal salary;
+            decimal payrate;
+
 
             Console.WriteLine("Press 'q' to quit, 's' to create a salary employee and 'h' for an hourly employee");
             option = Console.ReadKey().KeyChar;
@@ -59,6 +61,8 @@ namespace VogtPayroll2
 
             while (option != 'q')
             {
+   
+                
                 switch (option)
                 {
                     case 's':
@@ -76,7 +80,9 @@ namespace VogtPayroll2
                         name = Console.ReadLine();
                         Console.WriteLine("How many hours were worked?");
                         hoursWorked = Convert.ToInt32(Console.ReadLine());
-                        employeeList = payrollManager.AddEmployee(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, hoursWorked));
+                        Console.WriteLine("What is the payrate of the employee?");
+                        payrate = Convert.ToDecimal(Console.ReadLine());
+                        employeeList = payrollManager.AddEmployee(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, payrate, hoursWorked));
                         employeeCounter++;
                         break;
                     case 'q':

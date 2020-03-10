@@ -21,6 +21,7 @@ namespace VogtPayroll2
         public void DisplayEmployeeInfo(Employee employee)
         {
             // The output should display the name of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
+            Console.WriteLine(" ");
             Console.WriteLine($"Employee Name: {employee._name}");
             Console.WriteLine($"Hours worked: {employee._hoursWorked}");
             Console.WriteLine($"Hourly rate: {GetPayRate():C2}");
