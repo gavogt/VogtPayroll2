@@ -6,32 +6,24 @@ namespace VogtPayroll2
 {
     class EmployeeHourly : Employee
     {
-        public EmployeeHourly(string aName, int aHoursWorked, decimal aPayRate)
-            : base(aName, aHoursWorked, aPayRate)
+        public EmployeeHourly(string name, int hoursWorked)
+            : base(name, hoursWorked)
         {
-            this.name = aName;
-            this.hoursWorked = aHoursWorked;
-            this.payRate = aPayRate;
+            this._name = name;
+            this._hoursWorked = hoursWorked;
+
         }
 
         public override decimal GetGrossPay()
         {
-            decimal regularPay = default;
-            decimal overTime;
-            overTime = OverTime();
-            if (hoursWorked > 40)
-            {
-                hoursWorked = 40;
-                regularPay = 1.5m * hoursWorked * payRate;
-            }
+            return _hoursWorked + GetPayRate();
 
-            return overTime + regularPay;
         }
 
         public override decimal GetPayRate()
         {
+            return _payRate;
 
-            return payRate;
         }
     }
 }
