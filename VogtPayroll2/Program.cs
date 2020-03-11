@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VogtPayroll2
 {
@@ -16,22 +17,12 @@ namespace VogtPayroll2
 
             foreach (var employee in employeeList)
             {
+                employee.NetPay = employee.GetNetPay();
                 employee.DisplayEmployeeInfo(employee);
             }
 
-        }
-
-        public static int HowManyEmployees()
-        {
-            bool run;
-
-
-            Console.WriteLine("How many employees would you like to add? Please select 1-10");
-            run = int.TryParse(Console.ReadLine(), out int result) && result > 1 && result < 10;
-
-            Console.WriteLine($"Adding {result} employees!");
-
-            return result;
+            employeeList= payrollManager.GetNetPayOfAllEmployees(employeeList);
+            payrollManager.GetMinimumAndMaximumNetPay(employeeList);
 
         }
 

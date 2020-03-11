@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+
 
 namespace VogtPayroll2
 {
@@ -8,18 +10,35 @@ namespace VogtPayroll2
     {
         private List<Employee> _employees = new List<Employee>();
 
-        public void GetNetPayOfAllEmployees(Employee[] employee)
+        public List<Employee> GetNetPayOfAllEmployees(List<Employee> employees)
         {
-            // The average net pay of all employees should also be displayed
+            List<Employee> sortedList = new List<Employee>();
+            
+            sortedList = employees.OrderBy(employees => employees.NetPay).ToList();
+
+            return sortedList;
+
         }
 
-        public void GetMinimumAndMaximumNetPay()
+        public void GetMinimumAndMaximumNetPay(List<Employee> sortedList)
         {
             // In addition, the program should find the minimum and maximum net pay of all employees as well as sort the employees based on their net pay (ascending order)
             // The program must combine two sorting techniques; the Selection and Exchange sorts. It will efficiently sort the employees' net pay.
             // Preferrably without using a data file.
 
             //return netPay;
+            foreach (var employee in sortedList)
+            {
+                Console.WriteLine("Highest net pay");
+                Console.WriteLine(employee.NetPay);
+                Console.Write("highest netpay: ");
+
+            }
+
+            Console.WriteLine(sortedList.FirstOrDefault().ToString());
+            Console.Write("lowest netpay: ");
+            Console.WriteLine(sortedList.LastOrDefault().ToString());
+
 
         }
 

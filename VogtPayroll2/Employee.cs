@@ -13,7 +13,7 @@ namespace VogtPayroll2
 
         protected const decimal _taxAmount = .30m;
 
-        protected decimal NetPay { get => netPay; set => netPay = value; }
+        public decimal NetPay { get => netPay; set => netPay = value; }
 
         public Employee(string name, int hoursWorked)
         {
