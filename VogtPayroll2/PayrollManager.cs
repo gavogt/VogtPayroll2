@@ -26,18 +26,10 @@ namespace VogtPayroll2
             // The program must combine two sorting techniques; the Selection and Exchange sorts. It will efficiently sort the employees' net pay.
             // Preferrably without using a data file.
 
-            //return netPay;
-            foreach (var employee in sortedList)
-            {
-                Console.WriteLine("Highest net pay");
-                Console.WriteLine(employee.NetPay);
-                Console.Write("highest netpay: ");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine($"highest netpay: {sortedList.LastOrDefault().NetPay:C2}");
 
-            }
-
-            Console.WriteLine(sortedList.FirstOrDefault().ToString());
-            Console.Write("lowest netpay: ");
-            Console.WriteLine(sortedList.LastOrDefault().ToString());
+            Console.WriteLine($"lowest netpay: {sortedList.FirstOrDefault().NetPay:C2}");
 
 
         }
