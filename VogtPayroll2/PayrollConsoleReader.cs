@@ -8,16 +8,14 @@ namespace VogtPayroll2
     {
         public static SalaryEmployee ReadSalaryEmployeeFromConsole(string name, int hoursWorked, decimal salary)
         {
-            SalaryEmployee salaryEmp = new SalaryEmployee(name, hoursWorked, salary);
+            return new SalaryEmployee(name, hoursWorked, salary);
 
-            return salaryEmp;
         }
 
         public static HourlyEmployee ReadHourlyEmployeeFromConsole(string name, decimal payrate, int hoursWorked)
         {
-            HourlyEmployee hourlyEmp = new HourlyEmployee(name, payrate, hoursWorked);
+            return new HourlyEmployee(name, payrate, hoursWorked);
 
-            return hourlyEmp;
         }
     }
 }

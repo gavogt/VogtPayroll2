@@ -9,8 +9,11 @@ namespace VogtPayroll2
         //For simplicity, use a constant tax rate of 30% to compute the tax amount
         protected string _name;
         protected int _hoursWorked;
-        protected decimal _payRate;
+        private decimal netPay;
+
         protected const decimal _taxAmount = .30m;
+
+        protected decimal NetPay { get => netPay; set => netPay = value; }
 
         public Employee(string name, int hoursWorked)
         {
@@ -18,6 +21,10 @@ namespace VogtPayroll2
             _hoursWorked = hoursWorked;
 
         }
+
+        public abstract decimal GetGrossPay();
+        public abstract decimal GetPayRate();
+
         public void DisplayEmployeeInfo(Employee employee)
         {
             // The output should display the name of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
@@ -28,21 +35,12 @@ namespace VogtPayroll2
             Console.WriteLine($"Overtime pay: {GetOverTimePay():C2}");
             Console.WriteLine($"Regular (gross) pay: {GetGrossPay():C2}");
             Console.WriteLine($"Tax amount: {GetTaxAmount():C2}");
-            Console.WriteLine($"Net GetOvertimePay: {GetNetPay():C2}");
+            Console.WriteLine($"Net GetOverTimePay: {GetNetPay():C2}");
+
         }
+
 
         public decimal GetOverTimePay()
-        {
-            //Employees that work over 40 hours will receive overtime pay of one and a half of their hourly rate for overtime hours worked.
-            decimal overTimePay = default;
-
-            overTimePay = GetOvertimePay(_payRate);
-
-            return overTimePay;
-
-        }
-
-        public decimal GetOvertimePay(decimal payRate)
         {
             if (_hoursWorked <= 40)
                 return 0;
@@ -50,10 +48,6 @@ namespace VogtPayroll2
             return GetPayRate() * (_hoursWorked - 40);
 
         }
-
-        public abstract decimal GetGrossPay();
-        public abstract decimal GetPayRate();
-
 
         public decimal GetTaxAmount()
         {
@@ -63,6 +57,7 @@ namespace VogtPayroll2
 
         public decimal GetNetPay()
         {
+
             return GetGrossPay() - GetTaxAmount();
 
         }

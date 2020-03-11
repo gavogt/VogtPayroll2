@@ -19,15 +19,6 @@ namespace VogtPayroll2
                 employee.DisplayEmployeeInfo(employee);
             }
 
-
-            
-        }
-
-        public static Employee[] EmployeeArray(int result)
-        {
-            Employee[] employeeArray = new Employee[result];
-
-            return employeeArray;
         }
 
         public static int HowManyEmployees()
@@ -61,8 +52,8 @@ namespace VogtPayroll2
 
             while (option != 'q')
             {
-   
-                
+
+
                 switch (option)
                 {
                     case 's':
@@ -72,7 +63,7 @@ namespace VogtPayroll2
                         hoursWorked = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("What is the salary of the employee?");
                         salary = Convert.ToDecimal(Console.ReadLine());
-                        employeeList = payrollManager.AddEmployee(PayrollConsoleReader.ReadSalaryEmployeeFromConsole(name, hoursWorked, salary));
+                        employeeList.Add(PayrollConsoleReader.ReadSalaryEmployeeFromConsole(name, hoursWorked, salary));
                         employeeCounter++;
                         break;
                     case 'h':
@@ -82,7 +73,7 @@ namespace VogtPayroll2
                         hoursWorked = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("What is the payrate of the employee?");
                         payrate = Convert.ToDecimal(Console.ReadLine());
-                        employeeList = payrollManager.AddEmployee(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, payrate, hoursWorked));
+                        employeeList.Add(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, payrate, hoursWorked));
                         employeeCounter++;
                         break;
                     case 'q':
@@ -97,6 +88,7 @@ namespace VogtPayroll2
                 Console.WriteLine("");
             }
             return employeeList;
+
         }
     }
 }
