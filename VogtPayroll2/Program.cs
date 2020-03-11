@@ -21,7 +21,7 @@ namespace VogtPayroll2
                 employee.DisplayEmployeeInfo(employee);
             }
 
-            employeeList= payrollManager.GetNetPayOfAllEmployees(employeeList);
+            employeeList = payrollManager.GetNetPayOfAllEmployees(employeeList);
             payrollManager.GetMinimumAndMaximumNetPay(employeeList);
 
         }
@@ -32,9 +32,6 @@ namespace VogtPayroll2
             List<Employee> employeeList = new List<Employee>();
             char option;
             string name;
-            int hoursWorked;
-            decimal salary;
-            decimal payrate;
 
 
             Console.WriteLine("Press 'q' to quit, 's' to create a salary employee and 'h' for an hourly employee");
@@ -44,26 +41,56 @@ namespace VogtPayroll2
             while (option != 'q')
             {
 
-
+                bool run;
                 switch (option)
                 {
                     case 's':
                         Console.WriteLine("What is the name of the employee?");
                         name = Console.ReadLine();
+                        while (string.IsNullOrEmpty(name))
+                        {
+                            Console.WriteLine("The name can't be empty! try again");
+                            name = Console.ReadLine();
+                        }
                         Console.WriteLine("How many hours were worked?");
-                        hoursWorked = Convert.ToInt32(Console.ReadLine());
+                        var hoursWorked = Console.ReadLine();
+                        while (!int.TryParse(hoursWorked, out int result))
+                        {
+                            Console.WriteLine("Not a number!");
+                            hoursWorked = Console.ReadLine();
+                        }
                         Console.WriteLine("What is the salary of the employee?");
-                        salary = Convert.ToDecimal(Console.ReadLine());
+                        var salary = Console.ReadLine();
+                        while (!decimal.TryParse(salary, out decimal result))
+                        {
+                            Console.WriteLine("Not a salary amount!");
+                            salary = Console.ReadLine();
+                        }
                         employeeList.Add(PayrollConsoleReader.ReadSalaryEmployeeFromConsole(name, hoursWorked, salary));
                         employeeCounter++;
                         break;
                     case 'h':
                         Console.WriteLine("What is the name of the employee?");
                         name = Console.ReadLine();
+                        while (string.IsNullOrEmpty(name))
+                        {
+                            Console.WriteLine("The name can't be empty! try again");
+                            name = Console.ReadLine();
+                        }
                         Console.WriteLine("How many hours were worked?");
-                        hoursWorked = Convert.ToInt32(Console.ReadLine());
+                        hoursWorked = Console.ReadLine();
+                        while (!int.TryParse(hoursWorked, out int result))
+                        {
+                            Console.WriteLine("Not a number!");
+                            hoursWorked = Console.ReadLine();
+                        }
                         Console.WriteLine("What is the payrate of the employee?");
-                        payrate = Convert.ToDecimal(Console.ReadLine());
+                        var payrate = Console.ReadLine();
+                        while (!decimal.TryParse(payrate, out decimal result))
+                        {
+                            Console.WriteLine("Not a salary amount!");
+                            salary = Console.ReadLine();
+                        }
                         employeeList.Add(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, payrate, hoursWorked));
                         employeeCounter++;
                         break;
