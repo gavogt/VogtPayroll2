@@ -9,11 +9,11 @@ namespace VogtPayroll2
         //For simplicity, use a constant tax rate of 30% to compute the tax amount
         protected string _name;
         protected int _hoursWorked;
-        private decimal netPay;
+        private decimal _netPay;
 
         protected const decimal _taxAmount = .30m;
 
-        public decimal NetPay { get => netPay; set => netPay = value; }
+        public decimal NetPay { get => _netPay; set => _netPay = value; }
 
         public Employee(string name, int hoursWorked)
         {
