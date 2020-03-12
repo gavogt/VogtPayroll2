@@ -17,19 +17,31 @@ namespace VogtPayroll2
 
         }
 
+        #region GetGrossPay
+        /// <summary>
+        /// Gets salary GrossPay
+        /// </summary>
+        /// <returns>Gross Pay</returns>
         public override decimal GetGrossPay()
         {
             // For salary based employees, to find the regular (gross) pay for a week, divide the salary by 52.
             return _salary / 52;
 
         }
+        #endregion
 
+        #region GetPayRate
+        /// <summary>
+        /// Gets salary payrate
+        /// </summary>
+        /// <returns>Payrate</returns>
         public override decimal GetPayRate()
         {
             // To compute the overtime pay for a salary based employee, first find the hourly rate by dividing the gross pay by 40, and then compute overtime pay
             return Convert.ToDecimal(GetGrossPay() / 40);
 
         }
+        #endregion
 
 
 

@@ -17,16 +17,29 @@ namespace VogtPayroll2
 
         }
 
+        #region GetGrossPay
+        /// <summary>
+        /// Gets the gross pay
+        /// </summary>
+        /// <returns>Gross pay</returns>
         public override decimal GetGrossPay()
         {
             return _hoursWorked * GetPayRate();
 
         }
+        #endregion
 
+        #region GetPayRate
+        /// <summary>
+        /// Gets the payrate
+        /// </summary>
+        /// <returns>Payrate</returns>
         public override decimal GetPayRate()
         {
             return _payRate;
 
         }
+        #endregion
+
     }
 }

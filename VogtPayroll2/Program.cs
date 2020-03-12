@@ -17,9 +17,11 @@ namespace VogtPayroll2
             {
                 employee.NetPay = employee.GetNetPay();
                 employee.DisplayEmployeeInfo(employee);
+
             }
 
             employeeList = payrollManager.GetNetPayOfAllEmployees(employeeList);
+            
             payrollManager.GetMinimumAndMaximumNetPay(employeeList);
 
         }
@@ -30,10 +32,13 @@ namespace VogtPayroll2
             List<Employee> employeeList = new List<Employee>();
 
             char option;
+
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
             Console.WriteLine("Press 'q' to quit, 's' to create a salary employee and 'h' for an hourly employee");
+
             option = Console.ReadKey().KeyChar;
+
             Console.WriteLine("");
 
             while (option != 'q')
@@ -60,6 +65,7 @@ namespace VogtPayroll2
                 Console.WriteLine("");
 
             }
+
             return employeeList;
 
         }

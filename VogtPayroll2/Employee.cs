@@ -25,6 +25,11 @@ namespace VogtPayroll2
         public abstract decimal GetGrossPay();
         public abstract decimal GetPayRate();
 
+        #region DisplayEmployeeInfo
+        /// <summary>
+        /// Displays employee information
+        /// </summary>
+        /// <param name="employee">Employee being passed in</param>
         public void DisplayEmployeeInfo(Employee employee)
         {
             // The output should display the name of each Employee, hours worked, hourly rate, overtime pay, regular (gross) pay, tax amount, and net pay.
@@ -38,8 +43,13 @@ namespace VogtPayroll2
             Console.WriteLine($"Net GetOverTimePay: {GetNetPay():C2}");
 
         }
+        #endregion
 
-
+        #region GetOverTimePay
+        /// <summary>
+        /// Gets overtime pay
+        /// </summary>
+        /// <returns>Overtime</returns>
         public decimal GetOverTimePay()
         {
             if (_hoursWorked <= 40)
@@ -48,19 +58,32 @@ namespace VogtPayroll2
             return GetPayRate() * (_hoursWorked - 40);
 
         }
+        #endregion
 
+        #region GetTaxAmount
+        /// <summary>
+        /// Gets tax amount
+        /// </summary>
+        /// <returns>Tax Amount</returns>
         public decimal GetTaxAmount()
         {
             return _taxAmount * GetGrossPay();
 
         }
+        #endregion
 
+        #region GetNetPay
+        /// <summary>
+        /// Gets Net Pay 
+        /// </summary>
+        /// <returns>Net Pay</returns>
         public decimal GetNetPay()
         {
 
             return GetGrossPay() - GetTaxAmount();
 
         }
+        #endregion
 
     }
 }

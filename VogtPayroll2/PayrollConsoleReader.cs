@@ -6,6 +6,11 @@ namespace VogtPayroll2
 {
     class PayrollConsoleReader
     {
+        #region ReadSalaryEmployeeFromConsole
+        /// <summary>
+        /// Create a salary employee
+        /// </summary>
+        /// <returns>A salary employee</returns>
         public SalaryEmployee ReadSalaryEmployeeFromConsole()
         {
             string name;
@@ -19,7 +24,13 @@ namespace VogtPayroll2
             return new SalaryEmployee(name, hoursWorked, salary);
 
         }
+        #endregion
 
+        #region ReadHourlyEmployeeFromConsole
+        /// <summary>
+        /// Create an hourly employee
+        /// </summary>
+        /// <returns>An hourly employee</returns>
         public HourlyEmployee ReadHourlyEmployeeFromConsole()
         {
             string name;
@@ -33,7 +44,13 @@ namespace VogtPayroll2
             return new HourlyEmployee(name, payrate, hoursWorked);
 
         }
+        #endregion
 
+        #region GetPayrateConsole
+        /// <summary>
+        /// Gets the payrate from user
+        /// </summary>
+        /// <returns>The payrate</returns>
         public decimal GetPayrateConsole()
         {
             decimal payrateResult;
@@ -48,7 +65,13 @@ namespace VogtPayroll2
             return payrateResult;
 
         }
+        #endregion
 
+        #region GetHoursWorkedConsole
+        /// <summary>
+        /// Gets the hours worked from user
+        /// </summary>
+        /// <returns>The number of hours worked</returns>
         public int GetHoursWorkedConsole()
         {
 
@@ -64,7 +87,13 @@ namespace VogtPayroll2
             return hoursResult;
 
         }
+        #endregion
 
+        #region GetNameConsole
+        /// <summary>
+        /// Gets the name from user
+        /// </summary>
+        /// <returns>The name</returns>
         public string GetNameConsole()
         {
             Console.WriteLine("What is the name of the employee?");
@@ -80,7 +109,13 @@ namespace VogtPayroll2
             return name;
 
         }
+        #endregion
 
+        #region GetSalaryConsole
+        /// <summary>
+        /// Gets the salary from user
+        /// </summary>
+        /// <returns>The salary</returns>
         public decimal GetSalaryConsole()
         {
             decimal salaryResult;
@@ -99,5 +134,6 @@ namespace VogtPayroll2
             return salaryResult;
 
         }
+        #endregion
     }
 }
