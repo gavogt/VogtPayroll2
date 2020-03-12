@@ -6,8 +6,6 @@ namespace VogtPayroll2
 {
     class Program
     {
-        private static int employeeCounter;
-
         static void Main(string[] args)
         {
             PayrollManager payrollManager = new PayrollManager();
@@ -32,11 +30,7 @@ namespace VogtPayroll2
             List<Employee> employeeList = new List<Employee>();
 
             char option;
-            string name;
-            int hoursResult;
-            decimal salaryResult;
-            decimal payrateResult;
-
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
             Console.WriteLine("Press 'q' to quit, 's' to create a salary employee and 'h' for an hourly employee");
             option = Console.ReadKey().KeyChar;
@@ -45,60 +39,13 @@ namespace VogtPayroll2
             while (option != 'q')
             {
 
-                bool run;
                 switch (option)
                 {
                     case 's':
-                        Console.WriteLine("What is the name of the employee?");
-                        name = Console.ReadLine();
-                        while (string.IsNullOrEmpty(name))
-                        {
-                            Console.WriteLine("The name can't be empty! try again");
-                            name = Console.ReadLine();
-                        }
-                        Console.WriteLine("How many hours were worked?");
-                        var hoursWorked = Console.ReadLine();
-                        while (!int.TryParse(hoursWorked, out hoursResult))
-                        {
-                            Console.WriteLine("Not a number!");
-                            hoursWorked = Console.ReadLine();
-                        }
-                        Console.WriteLine("What is the salary of the employee?");
-                        var salary = Console.ReadLine();
-                        while (!decimal.TryParse(salary, out salaryResult))
-                        {
-                            Console.WriteLine("Not a salary amount!");
-                            salary = Console.ReadLine();
-
-
-                        }
-                        employeeList.Add(PayrollConsoleReader.ReadSalaryEmployeeFromConsole(name, hoursResult, salaryResult));
-                        employeeCounter++;
+                        employeeList.Add(payrollConsoleReader.ReadSalaryEmployeeFromConsole());
                         break;
                     case 'h':
-                        Console.WriteLine("What is the name of the employee?");
-                        name = Console.ReadLine();
-                        while (string.IsNullOrEmpty(name))
-                        {
-                            Console.WriteLine("The name can't be empty! try again");
-                            name = Console.ReadLine();
-                        }
-                        Console.WriteLine("How many hours were worked?");
-                        hoursWorked = Console.ReadLine();
-                        while (!int.TryParse(hoursWorked, out hoursResult))
-                        {
-                            Console.WriteLine("Not a number!");
-                            hoursWorked = Console.ReadLine();
-                        }
-                        Console.WriteLine("What is the payrate of the employee?");
-                        var payrate = Console.ReadLine();
-                        while (!decimal.TryParse(payrate, out payrateResult))
-                        {
-                            Console.WriteLine("Not a salary amount!");
-                            salary = Console.ReadLine();
-                        }
-                        employeeList.Add(PayrollConsoleReader.ReadHourlyEmployeeFromConsole(name, payrateResult, hoursResult));
-                        employeeCounter++;
+                        employeeList.Add(payrollConsoleReader.ReadHourlyEmployeeFromConsole());
                         break;
                     case 'q':
                         System.Environment.Exit(0);
@@ -108,8 +55,10 @@ namespace VogtPayroll2
                         break;
 
                 }
+
                 option = Console.ReadKey().KeyChar;
                 Console.WriteLine("");
+
             }
             return employeeList;
 
