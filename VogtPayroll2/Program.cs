@@ -11,18 +11,8 @@ namespace VogtPayroll2
             PayrollManager payrollManager = new PayrollManager();
             List<Employee> employeeList = new List<Employee>();
 
-            employeeList = PrintMenu();
-
-            foreach (var employee in employeeList)
-            {
-                employee.NetPay = employee.GetNetPay();
-                employee.DisplayEmployeeInfo(employee);
-
-            }
-
-            employeeList = payrollManager.GetNetPayOfAllEmployees(employeeList);
-            
-            payrollManager.GetMinimumAndMaximumNetPay(employeeList);
+            employeeList = payrollManager.PrintMenuAndAllEmployeeInfo();
+            payrollManager.PrintNetPayOfAllEmployees(employeeList);
 
         }
 

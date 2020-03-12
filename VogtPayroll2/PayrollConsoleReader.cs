@@ -13,13 +13,10 @@ namespace VogtPayroll2
         /// <returns>A salary employee</returns>
         public SalaryEmployee ReadSalaryEmployeeFromConsole()
         {
-            string name;
-            int hoursWorked;
-            decimal salary;
 
-            name = GetNameConsole();
-            hoursWorked = GetHoursWorkedConsole();
-            salary = GetSalaryConsole();
+            string name = GetNameConsole();
+            int hoursWorked = GetHoursWorkedConsole();
+            decimal salary = GetSalaryConsole();
 
             return new SalaryEmployee(name, hoursWorked, salary);
 

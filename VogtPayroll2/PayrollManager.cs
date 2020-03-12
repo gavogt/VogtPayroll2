@@ -15,13 +15,10 @@ namespace VogtPayroll2
         /// </summary>
         /// <param name="employees">Employees passed in by a list</param>
         /// <returns>A sorted list</returns>
-        public List<Employee> GetNetPayOfAllEmployees(List<Employee> employees)
+        private List<Employee> GetNetPayOfAllEmployees(List<Employee> employees)
         {
-            List<Employee> sortedList = new List<Employee>();
-            
-            sortedList = employees.OrderBy(employees => employees.NetPay).ToList();
 
-            return sortedList;
+            return employees.OrderBy(employees => employees.NetPay).ToList();
 
         }
         #endregion
@@ -31,7 +28,7 @@ namespace VogtPayroll2
         /// Gets the max and min value of the netpay for an employee list
         /// </summary>
         /// <param name="sortedList">The sorted list passed in</param>
-        public void GetMinimumAndMaximumNetPay(List<Employee> sortedList)
+        private void GetMinimumAndMaximumNetPay(List<Employee> sortedList)
         {
             // In addition, the program should find the minimum and maximum net pay of all employees as well as sort the employees based on their net pay (ascending order)
             // The program must combine two sorting techniques; the Selection and Exchange sorts. It will efficiently sort the employees' net pay.
@@ -46,5 +43,42 @@ namespace VogtPayroll2
         }
         #endregion
 
+        #region PrintMenuAndAllEmployeeInfo
+        /// <summary>
+        /// Prints menu and all employee infomation
+        /// </summary>
+        public List<Employee> PrintMenuAndAllEmployeeInfo()
+        {
+            List<Employee> employeeList = new List<Employee>();
+
+            employeeList = Program.PrintMenu();
+
+            foreach (var employee in employeeList)
+            {
+                employee.NetPay = employee.GetNetPay();
+                employee.DisplayEmployeeInfo(employee);
+
+            }
+
+            return employeeList;
+        }
+        #endregion
+
+        #region PrintNetPayOfAllEmployees
+        /// <summary>
+        /// Prints netpay and netpay sorted for employees
+        /// </summary>
+        public void PrintNetPayOfAllEmployees(List<Employee> employeeList)
+        {
+            PayrollManager payrollManager = new PayrollManager();
+ 
+            employeeList = payrollManager.GetNetPayOfAllEmployees(employeeList);
+            payrollManager.GetMinimumAndMaximumNetPay(employeeList);
+
+
+        }
+        #endregion
     }
+
+
 }
